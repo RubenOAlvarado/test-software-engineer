@@ -1,0 +1,33 @@
+{
+  "name": "test-software-engineer",
+  "version": "1.0.0",
+  "description": "Yaydoo software engineer test",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha spec/*.js",
+    "after-30-days": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RubenOAlvarado/test-software-engineer.git"
+  },
+  "keywords": [
+    "test",
+    "software",
+    "engineer"
+  ],
+  "author": "Ruben O. Alvarado",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/RubenOAlvarado/test-software-engineer/issues"
+  },
+  "homepage": "https://github.com/RubenOAlvarado/test-software-engineer#readme",
+  "dependencies": {
+    "chai": "^4.3.4",
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.25.2",
+    "eslint-plugin-mocha": "^9.0.0",
+    "mocha": "^9.1.3"
+  }
+}
