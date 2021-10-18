@@ -6,6 +6,4 @@ class Product {
   }
 }
 
-exports.module = {
-  Product,
-};
+module.exports = Product;

@@ -16,7 +16,7 @@ const productsAtDayZero = [
 
 const carInsurance = new CarInsurance(productsAtDayZero);
 
-for (let i = 0; i <= 30; i++) {
+for (let i = 1; i <= 30; i++) {
   console.log(`Day ${i}`);
   console.log('name, sellIn, price');
   carInsurance.updatePrice().forEach((product) => console.log(`${product.name}, ${product.sellIn}, ${product.price}`));

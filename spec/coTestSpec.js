@@ -1,8 +1,8 @@
 /* eslint-disable prefer-arrow-callback */
 const { expect } = require('chai');
 
-const Product = require('../src/product');
-const CarInsurance = require('../src/carInsurance');
+const { Product } = require('../src/product');
+const { CarInsurance } = require('../src/carInsurance');
 
 describe('Product test suite', function suite() {
   it('should foo', function foo() {

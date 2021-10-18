@@ -1,3 +1,12 @@
+const { productsKind } = require('./productsKind');
+const {
+  fullCoverage,
+  megaCoverage,
+  specialCoverage,
+  superCoverage,
+  mediumCoverage,
+} = require('./coverages');
+
 class CarInsurance {
   constructor(products = []) {
     this.products = products;
@@ -5,51 +14,27 @@ class CarInsurance {
 
   updatePrice() {
     for (let i = 0; i < this.products.length; i++) {
-      if (this.products[i].name !== 'Full Coverage' && this.products[i].name !== 'Special Full Coverage') {
-        if (this.products[i].price > 0) {
-          if (this.products[i].name !== 'Mega Coverage') {
-            this.products[i].price -= 1;
-          }
-        }
-      } else if (this.products[i].price < 50) {
-        this.products[i].price += 1;
-        if (this.products[i].name === 'Special Full Coverage') {
-          if (this.products[i].sellIn < 11) {
-            if (this.products[i].price < 50) {
-              this.products[i].price += 1;
-            }
-          }
-          if (this.products[i].sellIn < 6) {
-            if (this.products[i].price < 50) {
-              this.products[i].price += 1;
-            }
-          }
-        }
-      }
-      if (this.products[i].name !== 'Mega Coverage') {
-        this.products[i].sellIn -= 1;
-      }
-      if (this.products[i].sellIn < 0) {
-        if (this.products[i].name !== 'Full Coverage') {
-          if (this.products[i].name !== 'Special Full Coverage') {
-            if (this.products[i].price > 0) {
-              if (this.products[i].name !== 'Mega Coverage') {
-                this.products[i].price -= 1;
-              }
-            }
-          } else {
-            this.products[i].price -= this.products[i].price;
-          }
-        } else if (this.products[i].price < 50) {
-          this.products[i].price += 1;
-        }
+      const { name } = this.products[i];
+      switch (name) {
+        case productsKind.full:
+          this.products[i] = fullCoverage(this.products[i]);
+          break;
+        case productsKind.mega:
+          this.products[i] = megaCoverage(this.products[i]);
+          break;
+        case productsKind.special:
+          this.products[i] = specialCoverage(this.products[i]);
+          break;
+        case productsKind.super:
+          this.products[i] = superCoverage(this.products[i]);
+          break;
+        default:
+          this.products[i] = mediumCoverage(this.products[i]);
+          break;
       }
     }
-
     return this.products;
   }
 }
 
-module.exports = {
-  CarInsurance,
-};
+module.exports = CarInsurance;
