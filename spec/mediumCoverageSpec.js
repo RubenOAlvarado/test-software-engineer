@@ -22,4 +22,11 @@ describe('Medium coverage suite', function mediumCoverageSuite() {
     expect(products[0].price).equal(8);
     expect(products[0].sellIn).equal(-1);
   });
+  it('should not decrease price if its 0', function priceNotDecrease() {
+    const product = new Product('Medium Coverage', 2, 0);
+    const carInsurance = new CarInsurance([product]);
+    const products = carInsurance.updatePrice();
+    expect(products[0].name).equal('Medium Coverage');
+    expect(products[0].price).not.equal(-1);
+  });
 });

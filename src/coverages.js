@@ -2,7 +2,7 @@ exports.fullCoverage = (product) => {
   let price = product.price < 50 ? product.price + 1 : product.price;
   const sellIn = product.sellIn - 1;
 
-  if (product.sellIn < 0 && product.price < 49) {
+  if (product.sellIn <= 0 && price < 49) {
     price += 1;
   }
 
@@ -21,8 +21,8 @@ exports.megaCoverage = (product) => ({
 
 exports.specialCoverage = (product) => {
   let price = product.price < 50 ? product.price + 1 : product.price;
-  const sellIn = product.sellIn - 1;
 
+  const sellIn = product.sellIn - 1;
   if (sellIn < 0) {
     price = 0;
 
@@ -33,10 +33,10 @@ exports.specialCoverage = (product) => {
     };
   }
 
-  if (sellIn <= 10 && price < 48) {
+  if (product.sellIn <= 5 && price < 47) {
     price += 2;
-  } else if (sellIn <= 5 && price < 47) {
-    price += 3;
+  } else if (product.sellIn <= 10 && price < 48) {
+    price += 1;
   }
 
   return {
