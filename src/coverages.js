@@ -58,8 +58,12 @@ exports.superCoverage = (product) => {
 };
 
 exports.mediumCoverage = (product) => {
-  const price = product.price > 0 ? product.price - 1 : product.price;
+  let price = product.price > 0 ? product.price - 1 : product.price;
   const sellIn = product.sellIn - 1;
+
+  if (sellIn <= 0 && price > 0) {
+    price -= 1;
+  }
 
   return {
     name: product.name,
